@@ -1,0 +1,27 @@
+// ==UserScript==
+// @name         YouTube View All Chapters Button Clicker
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Automatically clicks the "View all" button on YouTube videos to show chapters/sections so you can skip to the time of the topic you want to view
+// @author       DIYking
+// @match        https://www.youtube.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // Function to automatically click the "View all" button
+    function clickViewAllButton() {
+        var viewAllButton = document.querySelector('button[aria-label="View all"]');
+        if (viewAllButton) {
+            viewAllButton.click();
+        }
+    }
+
+    // Automatically click the "View all" button when the page loads
+    window.addEventListener('load', function() {
+        // Delay the click to ensure that the page has fully loaded
+        setTimeout(clickViewAllButton, 2000); // Adjust delay time as needed
+    });
+})();
