@@ -1,0 +1,35 @@
+// ==UserScript==
+// @name         YouTube View Automation
+// @namespace    http://tampermonkey.net/
+// @version      0.2
+// @description  Automatically clicks the "View all" and "Dismiss" buttons
+// @author       DIYking
+// @match        https://www.youtube.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // Aautomatically click the "View all" button for skipping to chapters/sections
+    function clickViewAllButton() {
+        var viewAllButton = document.querySelector('button[aria-label="View all"]');
+        if (viewAllButton) {
+            viewAllButton.click();
+        }
+    }
+
+    // Automatically click the "Dismiss" button that pop-ups for YouTube TV
+    function clickDismissButton() {
+        var viewAllButton = document.querySelector('button[aria-label="Dismiss"]');
+        if (viewAllButton) {
+            viewAllButton.click();
+        }
+    }
+
+    // Delay the click to ensure that the page has fully loaded
+    window.addEventListener('load', function() {
+        setTimeout(clickViewAllButton, 4000); // Adjust delay time as needed
+        setTimeout(clickDismissButton, 9000); // Adjust delay time as needed
+    });
+})();
